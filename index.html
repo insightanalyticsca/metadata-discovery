@@ -1735,6 +1735,7 @@ body.graph-maximized .graph-surface {
   font-size: .82rem;
 }
 
+.nav-group{display:none !important;}
 </style>
 </head>
 <body data-theme="light">
@@ -2514,7 +2515,7 @@ function attachEvents() {
     renderGraph();
   });
 
-  ui.resetLayoutBtn.addEventListener('click', () => renderGraph());
+  ui.resetLayoutBtn.addEventListener('click', () => { state.filters = {table:true, view:true, proc:true, other:true}; ui.filterTables.checked = true; ui.filterViews.checked = true; ui.filterProcs.checked = true; ui.filterOther.checked = true; if (ui.nodeSearch) ui.nodeSearch.value = ''; if (ui.globalSearchInput) ui.globalSearchInput.value = ''; showAllObjects(false); });
   ui.graphMaxBtn.addEventListener('click', () => {
     document.body.classList.toggle('graph-maximized');
     setTimeout(() => {
